@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { Minus, Plus, ShieldCheck } from 'lucide-react';
@@ -44,6 +44,13 @@ export function BookingForm({ event }: BookingFormProps) {
   const remaining = event.totalTickets - event.bookedTickets;
   const maxQuantity = Math.min(remaining, 10);
   const totalPrice = event.currentPrice * quantity;
+
+  useEffect(() => {
+    if (quantity > maxQuantity) {
+      setQuantity(maxQuantity);
+      setValue('quantity', maxQuantity);
+    }
+  }, []);
 
   const handleQuantityChange = useCallback(
     (delta: number) => {
@@ -123,7 +130,7 @@ export function BookingForm({ event }: BookingFormProps) {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-          <input type="hidden" {...register('eventId')} value={event.id} />
+          <input type="hidden" {...register('eventId')} />
           <input
             type="hidden"
             {...register('quantity', { valueAsNumber: true })}

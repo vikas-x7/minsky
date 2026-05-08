@@ -166,7 +166,7 @@ export default async function EventDetailPage({
             initialPrice={event.currentPrice}
             basePrice={event.basePrice}
           />
-          <BookingForm event={event} />
+          <BookingForm key={event.id} event={event} />
         </div>
       </div>
     </div>

@@ -17,10 +17,15 @@ apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
     if (axios.isAxiosError(error)) {
+      const responseData = error.response?.data as
+        | { message?: string; error?: { message?: string } }
+        | undefined;
+
       return Promise.reject({
         success: false,
         message:
-          error.response?.data?.message ||
+          responseData?.message ||
+          responseData?.error?.message ||
           error.message ||
           'An unexpected error occurred',
         statusCode: error.response?.status || 500,

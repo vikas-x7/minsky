@@ -1,7 +1,10 @@
 import { z } from 'zod';
 
+const postgresUuidRegex =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
 export const bookingFormSchema = z.object({
-  eventId: z.string().uuid('Invalid event'),
+  eventId: z.string().regex(postgresUuidRegex, 'Invalid event'),
   userEmail: z.string().trim().email('Enter a valid email address'),
   quantity: z
     .number()

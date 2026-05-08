@@ -72,38 +72,16 @@ cd minsky
 pnpm install
 ```
 
-### 3. Start PostgreSQL
+### 3. Setup Environment variable
+
+### 4. Start PostgreSQL
 
 ```bash
 docker compose up --build
 ```
 
-### 4. Setup Database
-
-```bash
-cd packages/database
-
-pnpm db:push
-pnpm db:seed
-```
-
-### 5. Start Development Server
-
-```bash
-pnpm dev
-```
-
-Frontend:
-
-```txt
-http://localhost:3000
-```
-
-Backend:
-
-```txt
-http://localhost:3001
-```
+Docker runs `db:push:force` and `db:seed` automatically before starting the API.
+The seed step inserts sample events only when the `events` table is empty.
 
 ---
 

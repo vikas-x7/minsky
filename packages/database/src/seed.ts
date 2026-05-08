@@ -1,5 +1,6 @@
 import { createDb } from './index.js';
 import { events, type PricingRulesConfig } from './schema.js';
+import { sql } from 'drizzle-orm';
 
 async function seed() {
   const databaseUrl = process.env['DATABASE_URL'];
@@ -75,7 +76,7 @@ async function seed() {
       pricingRules: defaultPricingRules,
     },
     {
-      id: 'c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f',
+      id: 'c3d4e5f6-a7b8-4c9d-8e1f-2a3b4c5d6e7f',
       name: 'Startup Summit Delhi',
       description:
         "Connect with 200+ startups, 50+ investors, and industry leaders at India's premier startup event. Pitch competitions, mentorship sessions, and exclusive fundraising workshops.",
@@ -90,7 +91,7 @@ async function seed() {
       pricingRules: defaultPricingRules,
     },
     {
-      id: 'd4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a',
+      id: 'd4e5f6a7-b8c9-4d0e-9f2a-3b4c5d6e7f8a',
       name: 'Comedy Night Special',
       description:
         "An evening of non-stop laughs featuring India's top stand-up comedians. Enjoy 4 hours of back-to-back sets, audience interactions, and surprise celebrity appearances.",
@@ -105,7 +106,7 @@ async function seed() {
       pricingRules: defaultPricingRules,
     },
     {
-      id: 'e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b',
+      id: 'e5f6a7b8-c9d0-4e1f-aa3b-4c5d6e7f8a9b',
       name: 'Web3 & Blockchain Hackathon',
       description:
         '48-hour hackathon focused on building decentralized applications. Prizes worth ₹10L, mentorship from industry experts, and recruitment opportunities from top Web3 companies.',
@@ -120,7 +121,7 @@ async function seed() {
       pricingRules: defaultPricingRules,
     },
     {
-      id: 'f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c',
+      id: 'f6a7b8c9-d0e1-4f2a-bb4c-5d6e7f8a9b0c',
       name: 'Classical Music Evening with Pt. Ravishankar Tribute',
       description:
         'A mesmerizing evening of Indian classical music paying tribute to the legendary Pt. Ravi Shankar. Featuring sitar, tabla, and flute performances by acclaimed artists.',
@@ -137,10 +138,23 @@ async function seed() {
   ];
 
   try {
-    // Clear existing data
-    await db.delete(events);
+    const existingEvents = await db
+      .select({ count: sql<number>`count(*)::int` })
+      .from(events);
+    const existingCount = existingEvents[0]?.count ?? 0;
+    const forceSeed = process.env['SEED_FORCE'] === 'true';
 
-    // Insert sample events
+    if (existingCount > 0 && !forceSeed) {
+      console.log(
+        ` Found ${existingCount} existing events. Skipping seed. Set SEED_FORCE=true to reseed.`,
+      );
+      return;
+    }
+
+    if (forceSeed) {
+      await db.delete(events);
+    }
+
     const inserted = await db.insert(events).values(sampleEvents).returning();
 
     console.log(` Inserted ${inserted.length} events:`);
