@@ -50,17 +50,20 @@ export default async function MyBookingsPage({
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="border-b border-gray-200 py-8 sm:py-12 flex justify-between">
+      <div className="border-b border-gray-200 py-4 sm:py-7 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div>
           <h1 className="text-2xl font-medium -tracking-[1px] text-gray-900 sm:text-3xl">
             My Bookings
           </h1>
+
           <p className="mt-2 text-base text-black/70 -tracking-[0.5px]">
             Look up your bookings by email address.
           </p>
         </div>
 
-        <EmailSearch defaultEmail={email} />
+        <div className="w-full md:w-auto">
+          <EmailSearch defaultEmail={email} />
+        </div>
       </div>
 
       <div className="py-8 sm:py-12">

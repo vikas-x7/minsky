@@ -34,11 +34,11 @@ export function EventCard({ event }: EventCardProps) {
   const hasSurge = priceDiff > 0;
 
   return (
-    <Card hover className="flex flex-col group p-2">
+    <Card hover className="flex flex-col group p-1 rounded-[10px]">
       <div className="flex flex-1 flex-col p-5 sm:p-4">
         <div className="flex items-start justify-between gap-3 mb-3">
           <div className="min-w-0 flex-1">
-            <h3 className="text-lg text-black font-medium -tracking-[1px] group-hover:text-black transition-colors line-clamp-2 leading-snug">
+            <h3 className="text-[22px] text-black font-medium -tracking-[0.5px]  group-hover:text-black transition-colors line-clamp-2 leading-snug mb-7">
               {event.name}
             </h3>
             <div className="flex items-center gap-1.5 mt-1.5 text-sm text-black/70">

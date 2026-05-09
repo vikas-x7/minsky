@@ -1,4 +1,4 @@
-# 🎟️ Dynamic Event Ticketing Platform
+#  Dynamic Event Ticketing Platform
 
 A full-stack event ticketing platform built with Next.js 15, NestJS, Turborepo, Drizzle ORM, and PostgreSQL.
 
@@ -23,24 +23,30 @@ A full-stack event ticketing platform built with Next.js 15, NestJS, Turborepo, 
 ## Tech Stack
 
 ### Frontend
-
-- Next.js 15
-- React Query
-- TailwindCSS
+- Next.js 15 (App Router, Turbopack)
+- React 19
+- Zustand (Global State Management)
+- React Query (Server State Management)
+- Axios (HTTP Client)
+- React Hook Form & Zod (Form Validation)
+- TailwindCSS v4 (Styling)
+- Lucide React (Icons)
 
 ### Backend
+- NestJS v11
+- Drizzle ORM (Database ORM)
+- PostgreSQL (Primary Database)
+- Upstash Redis (Caching & Rate Limiting)
+- Class Validator & Class Transformer
+- Helmet (Security Headers)
 
-- NestJS
-- Drizzle ORM
-- PostgreSQL
-- Redis
-
-### Tooling
-
-- Turborepo
-- Vitest
-- Docker Compose
-- TypeScript
+### Tooling & Infrastructure
+- Turborepo (Monorepo Management)
+- Docker & Docker Compose (Containerization)
+- Vitest & Supertest (Unit, Integration & E2E Testing)
+- TypeScript v5.9
+- Husky & Lint-Staged (Git Hooks & Pre-commit checks)
+- ESLint & Prettier (Code Quality)
 
 ---
 
@@ -59,29 +65,53 @@ packages/
 
 ## Setup
 
-### 1. Clone Repository
+You can set up and run this project using either **Docker** (recommended) or **Manually** via `pnpm`.
 
-```bash
-git clone https://github.com/vikas-x7/minsky
-cd minsky
-```
+### Method 1: Setup with Docker (Recommended)
 
-### 2. Install Dependencies
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/vikas-x7/minsky
+   cd minsky
+   ```
 
-```bash
-pnpm install
-```
+2. **Setup Environment Variables**
+   Create `.env` files in `apps/web/.env`, `apps/api/.env`, and `packages/database/.env` using the provided `.env.example` templates.
 
-### 3. Setup Environment variable
+3. **Start the containers**
+   ```bash
+   docker compose up --build
+   ```
+   *Note: The Docker setup will automatically sync your database schema and seed the initial data.*
 
-### 4. Start PostgreSQL
+---
 
-```bash
-docker compose up --build
-```
+### Method 2: Manual Setup with pnpm
 
-Docker runs `db:push:force` and `db:seed` automatically before starting the API.
-The seed step inserts sample events only when the `events` table is empty.
+1. **Clone the repository & Install Dependencies**
+   ```bash
+   git clone https://github.com/vikas-x7/minsky
+   cd minsky
+   pnpm install
+   ```
+
+2. **Setup Environment Variables**
+   Create `.env` files in `apps/web/.env`, `apps/api/.env`, and `packages/database/.env` using the provided `.env.example` templates.
+
+3. **Setup and Seed the Database**
+   Navigate to the database package to push the schema and seed the initial data:
+   ```bash
+   cd packages/database
+   pnpm db:push:force
+   pnpm db:seed
+   cd ../../
+   ```
+
+4. **Start the Development Servers**
+   ```bash
+   pnpm dev
+   ```
+   *This will start both the Next.js frontend and NestJS backend concurrently.*
 
 ---
 

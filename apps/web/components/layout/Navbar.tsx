@@ -12,7 +12,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-white/20 w-full">
+    <header className=" mb-5 sticky top-0 z-50 bg-white border-b border-white/20 w-full md:mb-1">
       <nav className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 ">
           <div className="flex justify-center items-center gap-2">
@@ -26,7 +26,7 @@ export function Navbar() {
               </span>
             </Link>
 
-            <h1 className="text-[20px] font-medium text-black -tracking-[1px] mt-1">
+            <h1 className="text-[1px] md:text-[20px] font-medium text-black -tracking-[1px] mt-1">
               Ticket Flow
             </h1>
           </div>
@@ -50,7 +50,6 @@ export function Navbar() {
             })}
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             className="md:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -65,7 +64,7 @@ export function Navbar() {
         </div>
 
         {mobileOpen && (
-          <div className="md:hidden border-t border-gray-100 py-4 space-y-1">
+          <div className="md:hidden   border-t border-gray-100 py-4 space-y-1">
             {navLinks.map((link) => {
               const isActive =
                 pathname === link.href ||
