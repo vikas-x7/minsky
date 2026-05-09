@@ -1,5 +1,5 @@
-import { createDb } from './index.js';
-import { events, type PricingRulesConfig } from './schema.js';
+import { createDb } from './index';
+import { events, type PricingRulesConfig } from './schema';
 import { sql } from 'drizzle-orm';
 
 async function seed() {
