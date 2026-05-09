@@ -19,7 +19,7 @@
     "db:push": "drizzle-kit push",
     "db:push:force": "drizzle-kit push --force",
     "db:studio": "drizzle-kit studio",
-    "db:seed": "tsx src/seed.ts"
+    "db:seed": "tsx --require dotenv/config src/seed.ts"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
