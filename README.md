@@ -1,4 +1,4 @@
-#  Dynamic Event Ticketing Platform
+# Dynamic Event Ticketing Platform
 
 A full-stack event ticketing platform built with Next.js 15, NestJS, Turborepo, Drizzle ORM, and PostgreSQL.
 
@@ -23,6 +23,7 @@ A full-stack event ticketing platform built with Next.js 15, NestJS, Turborepo, 
 ## Tech Stack
 
 ### Frontend
+
 - Next.js 15 (App Router, Turbopack)
 - React 19
 - Zustand (Global State Management)
@@ -33,6 +34,7 @@ A full-stack event ticketing platform built with Next.js 15, NestJS, Turborepo, 
 - Lucide React (Icons)
 
 ### Backend
+
 - NestJS v11
 - Drizzle ORM (Database ORM)
 - PostgreSQL (Primary Database)
@@ -41,6 +43,7 @@ A full-stack event ticketing platform built with Next.js 15, NestJS, Turborepo, 
 - Helmet (Security Headers)
 
 ### Tooling & Infrastructure
+
 - Turborepo (Monorepo Management)
 - Docker & Docker Compose (Containerization)
 - Vitest & Supertest (Unit, Integration & E2E Testing)
@@ -70,6 +73,7 @@ You can set up and run this project using either **Docker** (recommended) or **M
 ### Method 1: Setup with Docker (Recommended)
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/vikas-x7/minsky
    cd minsky
@@ -82,13 +86,14 @@ You can set up and run this project using either **Docker** (recommended) or **M
    ```bash
    docker compose up --build
    ```
-   *Note: The Docker setup will automatically sync your database schema and seed the initial data.*
+   _Note: The Docker setup will automatically sync your database schema and seed the initial data._
 
 ---
 
 ### Method 2: Manual Setup with pnpm
 
 1. **Clone the repository & Install Dependencies**
+
    ```bash
    git clone https://github.com/vikas-x7/minsky
    cd minsky
@@ -100,6 +105,7 @@ You can set up and run this project using either **Docker** (recommended) or **M
 
 3. **Setup and Seed the Database**
    Navigate to the database package to push the schema and seed the initial data:
+
    ```bash
    cd packages/database
    pnpm db:push:force
@@ -111,7 +117,7 @@ You can set up and run this project using either **Docker** (recommended) or **M
    ```bash
    pnpm dev
    ```
-   *This will start both the Next.js frontend and NestJS backend concurrently.*
+   _This will start both the Next.js frontend and NestJS backend concurrently._
 
 ---
 
