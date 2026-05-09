@@ -136,7 +136,7 @@ async function seed() {
       pricingRules: defaultPricingRules,
     },
 
-        {
+    {
       id: 'a7b8c9d0-e1f2-4a3b-8c4d-5e6f7a8b9c0d',
       name: 'Yoga & Wellness Retreat 2026',
       description:
@@ -185,7 +185,7 @@ async function seed() {
       id: 'd0e1f2a3-b4c5-4d6e-bf7a-8b9c0d1e2f3a',
       name: 'Cybersecurity Summit Pune 2026',
       description:
-        'India\'s leading cybersecurity conference with CTF competitions, red team vs blue team exercises, and talks on zero-day exploits, cloud security, and ethical hacking. CEH and CISSP workshops available.',
+        "India's leading cybersecurity conference with CTF competitions, red team vs blue team exercises, and talks on zero-day exploits, cloud security, and ethical hacking. CEH and CISSP workshops available.",
       date: new Date('2026-09-25T09:00:00Z'),
       venue: 'Pune International Convention Centre, Pune',
       totalTickets: 400,
@@ -215,7 +215,7 @@ async function seed() {
       id: 'f2a3b4c5-d6e7-4f8a-d19c-0d1e2f3a4b5c',
       name: 'EV & Green Tech Expo 2026',
       description:
-        'Explore the future of sustainable mobility at India\'s biggest electric vehicle and green technology expo. Test drives, battery tech showcases, solar energy demos, and panel discussions with policymakers.',
+        "Explore the future of sustainable mobility at India's biggest electric vehicle and green technology expo. Test drives, battery tech showcases, solar energy demos, and panel discussions with policymakers.",
       date: new Date('2026-10-03T09:30:00Z'),
       venue: 'Bharat Mandapam, New Delhi',
       totalTickets: 3000,
